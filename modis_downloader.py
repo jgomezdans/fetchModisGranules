@@ -248,6 +248,9 @@ def get_modis_data(
     gr = gr_to_dload
     req_fnames = [fich.split("/")[-1] for fich in gr]
     LOG.info("Will download %d files" % len(gr))
+    if len(gr) == 0:
+        LOG.info("Done")
+        return []
     have_all_files = False
     while not have_all_files:
         # Wait for a few minutes before downloading the data
